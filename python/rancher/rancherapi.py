@@ -58,18 +58,6 @@ class rancherAPI(object):
     r = self.requestSubmit('DELETE' ,'/v2-beta/projects/1a5/containers/1i177369', data='')
     return r.json()
 
-#//  def UpgradeContainer(self, containerName):
-#//   r = self.requestSubmit('POST',)
-#//"inServiceStrategy": {
-#//  "launchConfig": {
-#//    "tty":true,
-#//    "vcpu":1,
-#//    "imageUuid":"docker:ubuntu:14.04.3"
-#//    //...and other parameters of  your existing service's launch config
-#  }
-#}
-
-
   def addGenericMachine(self, enviroment, ipaddress, description, Mconfig, hostName):
     Env = findEnviroment(enviroment)
     urlpath='/v1/projects/' + enviroment +'/machines'
@@ -78,8 +66,3 @@ class rancherAPI(object):
     data.update({"genericConfig": { "ipAddress": ipaddress, "sshKey": "", "sshPort": "22", "sshUser": sshUser }})
     results=requests.post(hostname + ':' + port + urlpath, auth=(accessKey,secretKey), headers=headers, data=data)
     return data, urlpath
-
-#  def stopContainer():
-#    print ("Still in the works.")
-    #'http://10.10.5.10:8080/v1/projects/1a5/containers/1i13561/?action=stop'
-    #'http://10.10.5.10:8080/v1/projects/1a5/containers/1i13561/?action=purge'
